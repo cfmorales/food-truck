@@ -1,7 +1,7 @@
 import React from 'react';
 import {BrowserRouter as Router, Route, Routes} from 'react-router-dom';
 import Home from "../pages/Home/Home";
-import SearchByKey from "../pages/Search_By_Key/SearchByKey";
+import SearchByKey from "../pages/SearchByKey/SearchByKey";
 
 
 const AppRoutes: React.FC = () => {

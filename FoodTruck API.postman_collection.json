@@ -1,0 +1,100 @@
+{
+	"info": {
+		"_postman_id": "642f0aea-eb3d-4893-913c-370b8fee1a3a",
+		"name": "FoodTruck API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "13067023"
+	},
+	"item": [
+		{
+			"name": "Check if db has data",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": "http://127.0.0.1:8000/api/hasData"
+			},
+			"response": []
+		},
+		{
+			"name": "Get All data from DB",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/getData?perPage=10&page=1",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"getData"
+					],
+					"query": [
+						{
+							"key": "perPage",
+							"value": "10"
+						},
+						{
+							"key": "page",
+							"value": "1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "import csv",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "import_csv",
+							"type": "file",
+							"src": "/C:/Users/crist/Downloads/Mobile_Food_Facility_Permit.csv"
+						}
+					]
+				},
+				"url": "http://127.0.0.1:8000/api/import-csv"
+			},
+			"response": []
+		},
+		{
+			"name": "Get data by key",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "http://127.0.0.1:8000/api/getByKey?key=Burger",
+					"protocol": "http",
+					"host": [
+						"127",
+						"0",
+						"0",
+						"1"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"getByKey"
+					],
+					"query": [
+						{
+							"key": "key",
+							"value": "Burger"
+						}
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
