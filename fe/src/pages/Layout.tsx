@@ -30,18 +30,31 @@ interface LayoutProps {
     children: ReactNode;
 }
 
-const items: MenuItem[] = [
-    getItem(<Link to={'/'}>Home</Link>, '1', <PieChartOutlined/>),
-    getItem(<Link to={'/searchByKey'}>Search by key</Link>, '2', <DesktopOutlined/>),
-];
+enum SelectedTabs {
+    home = 'home',
+    search = 'search'
+}
+
+
 const Layout: React.FC<LayoutProps> = ({children}) => {
     const [collapsed, setCollapsed] = useState(false);
+    const [selectedTab, setSelectedTab] = useState<SelectedTabs>(SelectedTabs.home)
+
+    const items: MenuItem[] = [
+        getItem(<Link to={'/'}>Home</Link>, SelectedTabs.home, <PieChartOutlined/>),
+        getItem(<Link to={'/searchByKey'}>Search by key</Link>, SelectedTabs.search, <DesktopOutlined/>),
+    ];
+
+    function onSelectedTab(e: any) {
+        setSelectedTab(e.key)
+    }
 
     return (
         <MainLayout style={{minHeight: '100vh'}}>
             <Sider collapsible collapsed={collapsed} onCollapse={(value) => setCollapsed(value)}>
                 <div className="demo-logo-vertical"/>
-                <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline" items={items}/>
+                <Menu theme="dark" selectedKeys={[selectedTab]} onClick={onSelectedTab} mode="inline"
+                      items={items}/>
             </Sider>
             <MainLayout>
                 <Content style={{margin: '0 16px'}}>
